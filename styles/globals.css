@@ -1,22 +1,37 @@
-/* styles/globals.css */
+@import "../node_modules/nes.css/css/nes.css";
+
+* {
+  --bg-color: #f4f4e0;
+}
+
+@font-face {
+  font-family: "pixel-mplus12";
+  src: url(../public/PixelMplus12-Regular.ttf);
+}
+
 body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
+  font-family: "pixel-mplus12", sans-serif;
+  font-size: 24px;
+  background-color: var(--bg-color);
+  text-align: center;
+  padding: 1rem;
 }
 
-/* digit-card 内部は各コンポーネントでインラインスタイルで設定済み */
-
-/* ボタンのスタイル */
-button {
-  background-color: #0070f3;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-button:hover {
-  background-color: #005bb5;
+.title {
+  font-size: 24px !important;
+  background: var(--bg-color) !important;
+  position: relative;
+  top: -12px;
+}
+
+.nes-btn {
+  margin: 0 16px;
 }
