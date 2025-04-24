@@ -41,9 +41,7 @@ const BinaryDigitCard = ({
       className={styles.card + " " + (isActive ? styles.active : "")}
       onClick={onClick}
     >
-      <div className="number" style={{ fontSize: "1.5em", fontWeight: "bold" }}>
-        {value}
-      </div>
+      <div className={styles.value}>{value}</div>
       <div className={styles.dots}>
         {Array.from({ length: rows }).map((_) => {
           return (

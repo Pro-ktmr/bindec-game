@@ -2,7 +2,7 @@ import { GeneratorSettings } from "@/models/Difficulty";
 import random from "random";
 import React, { useEffect, useState } from "react";
 import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
-import BinaryDigitCard from "../Component/BinaryDigitCard";
+import BinaryDigitCard from "../Digit/BinaryDigitCard";
 
 const Decimal2Binary = ({
   settings,

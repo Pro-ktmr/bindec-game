@@ -3,8 +3,8 @@ import { GeneratorSettings } from "@/models/Difficulty";
 import random from "random";
 import React, { useEffect, useState } from "react";
 import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
-import BinaryDigitCard from "../Component/BinaryDigitCard";
-import { DecimalInput } from "../Component/DecimalInput";
+import BinaryDigitCard from "../Digit/BinaryDigitCard";
+import { DecimalDigitInput } from "../Digit/DecimalDigitInput";
 
 const Binary2DecimalFrame = ({
   settings,
@@ -112,7 +112,7 @@ const Binary2DecimalFrame = ({
           }}
         >
           {answerArray.map((digit, idx) => (
-            <DecimalInput
+            <DecimalDigitInput
               key={idx}
               value={digit}
               onIncrement={() => handleIncrement(idx)}

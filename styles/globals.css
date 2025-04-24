@@ -15,6 +15,7 @@ body {
   background-color: var(--bg-color);
   text-align: center;
   padding: 1rem;
+  user-select: none;
 }
 
 .container {

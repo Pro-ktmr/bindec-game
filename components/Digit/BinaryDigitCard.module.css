@@ -9,6 +9,11 @@
   border-radius: 4px;
 }
 
+.value {
+  font-size: 36px;
+  font-weight: bold;
+}
+
 .dots {
   flex: 1;
   font-size: 12px;
