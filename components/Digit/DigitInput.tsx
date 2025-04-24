@@ -1,6 +1,6 @@
-import styles from "./DecimalDigitInput.module.css";
+import styles from "./DigitInput.module.css";
 
-export const DecimalDigitInput = ({
+export const DigitInput = ({
   value,
   onIncrement,
   onDecrement,
@@ -20,7 +20,7 @@ export const DecimalDigitInput = ({
       >
         ▲
       </div>
-      <div className={styles.value}>{value}</div>
+      <div className={styles.value}>{value.toString(16)}</div>
       <div
         className={styles.arrow}
         style={{

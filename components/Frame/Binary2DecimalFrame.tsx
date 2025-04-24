@@ -4,7 +4,7 @@ import random from "random";
 import React, { useEffect, useState } from "react";
 import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
 import BinaryDigitCard from "../Digit/BinaryDigitCard";
-import { DecimalDigitInput } from "../Digit/DecimalDigitInput";
+import { DigitInput } from "../Digit/DigitInput";
 
 const Binary2DecimalFrame = ({
   settings,
@@ -112,7 +112,7 @@ const Binary2DecimalFrame = ({
           }}
         >
           {answerArray.map((digit, idx) => (
-            <DecimalDigitInput
+            <DigitInput
               key={idx}
               value={digit}
               onIncrement={() => handleIncrement(idx)}
