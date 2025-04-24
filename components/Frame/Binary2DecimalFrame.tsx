@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import BinaryDigitCard from "./BinaryDigitCard";
-import DecimalInput from "./DecimalInput";
+import { numberToBinary } from "@/libs/convert";
 import { GeneratorSettings } from "@/models/Difficulty";
 import random from "random";
-import { numberToBinary } from "@/libs/convert";
+import React, { useEffect, useState } from "react";
 import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
+import BinaryDigitCard from "../Component/BinaryDigitCard";
+import { DecimalInput } from "../Component/DecimalInput";
 
-const Decimal2Binary = ({
+const Binary2DecimalFrame = ({
   settings,
   timeLimit,
   onTimeout,
@@ -23,17 +23,27 @@ const Decimal2Binary = ({
   const [remainingTime, setRemainingTime] = useState(timeLimit);
   const [question] = useState(random.int(settings.min, settings.max));
   const [answerArray, setAnswerArray] = useState(
-    Array.from({ length: settings.binaryDigits }, () => 0)
+    Array.from({ length: settings.decimalDigits }, () => 0)
   );
 
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
 
-  const handleToggle = (index: number) => {
+  const handleIncrement = (index: number) => {
     if (isAnswerCorrect) return;
 
     setAnswerArray((prev) => {
       const newAnswer = [...prev];
-      newAnswer[index] = (newAnswer[index] + 1) % 2;
+      newAnswer[index] = (newAnswer[index] + 1) % 10;
+      return newAnswer;
+    });
+  };
+
+  const handleDecrement = (index: number) => {
+    if (isAnswerCorrect) return;
+
+    setAnswerArray((prev) => {
+      const newAnswer = [...prev];
+      newAnswer[index] = (newAnswer[index] + 9) % 10;
       return newAnswer;
     });
   };
@@ -53,7 +63,7 @@ const Decimal2Binary = ({
   useEffect(() => {
     if (isAnswerCorrect) return;
 
-    const answerNumber = parseInt(answerArray.join(""), 2);
+    const answerNumber = parseInt(answerArray.join(""), 10);
     if (answerNumber === question) {
       setIsAnswerCorrect(true);
       setTotalTime((prev) => prev + (Date.now() - startTime) / 1000.0);
@@ -75,7 +85,20 @@ const Decimal2Binary = ({
             justifyContent: "center",
           }}
         >
-          {question}
+          {numberToBinary(question, settings.binaryDigits)
+            .split("")
+            .map((bit, idx) => {
+              const numDots = Math.pow(2, settings.binaryDigits - 1 - idx);
+              return (
+                <BinaryDigitCard
+                  key={idx}
+                  numDots={numDots}
+                  value={bit === "1" ? 1 : 0}
+                  isActive={bit === "1"}
+                  onClick={() => {}}
+                />
+              );
+            })}
         </div>
       </section>
 
@@ -88,22 +111,15 @@ const Decimal2Binary = ({
             justifyContent: "center",
           }}
         >
-          {answerArray.map((bit, idx) => {
-            const numDots = Math.pow(2, settings.binaryDigits - 1 - idx);
-            return (
-              <BinaryDigitCard
-                key={idx}
-                numDots={numDots}
-                value={bit}
-                isActive={bit === 1}
-                onClick={() => {
-                  handleToggle(idx);
-                }}
-              />
-            );
-          })}
+          {answerArray.map((digit, idx) => (
+            <DecimalInput
+              key={idx}
+              value={digit}
+              onIncrement={() => handleIncrement(idx)}
+              onDecrement={() => handleDecrement(idx)}
+            />
+          ))}
         </div>
-        {parseInt(answerArray.join(""), 2)}
       </section>
 
       {!isAnswerCorrect && (
@@ -137,4 +153,4 @@ const Decimal2Binary = ({
   );
 };
 
-export default Decimal2Binary;
+export default Binary2DecimalFrame;

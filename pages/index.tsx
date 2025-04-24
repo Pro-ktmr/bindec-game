@@ -1,7 +1,6 @@
-import React from "react";
-import Link from "next/link";
 import { Difficulty } from "@/models/Difficulty";
 import { Mode } from "@/models/Mode";
+import Link from "next/link";
 
 const Top = () => {
   return (
@@ -37,19 +36,19 @@ const Top = () => {
         <div>
           <Link
             className="nes-btn is-success"
-            href={`/game?mode=${Mode.DecimalToBinary}&difficulty=${Difficulty.Easy}`}
+            href={`/game?mode=${Mode.Decimal2Binary}&difficulty=${Difficulty.Easy}`}
           >
             イージー
           </Link>
           <Link
             className="nes-btn is-warning"
-            href={`/game?mode=${Mode.DecimalToBinary}&difficulty=${Difficulty.Normal}`}
+            href={`/game?mode=${Mode.Decimal2Binary}&difficulty=${Difficulty.Normal}`}
           >
             ノーマル
           </Link>
           <Link
             className="nes-btn is-error"
-            href={`/game?mode=${Mode.DecimalToBinary}&difficulty=${Difficulty.Hard}`}
+            href={`/game?mode=${Mode.Decimal2Binary}&difficulty=${Difficulty.Hard}`}
           >
             ハード
           </Link>

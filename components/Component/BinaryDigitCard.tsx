@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./BinaryDigitCard.module.css";
 
 const getDotGridLayout = (dotCount: number) => {

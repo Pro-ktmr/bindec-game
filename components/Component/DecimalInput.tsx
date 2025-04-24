@@ -1,8 +1,12 @@
-// components/DecimalDigitControl.jsx
-import React from "react";
-import PropTypes from "prop-types";
-
-const DecimalInput = ({ value, onIncrement, onDecrement }) => {
+export const DecimalInput = ({
+  value,
+  onIncrement,
+  onDecrement,
+}: {
+  value: number;
+  onIncrement: () => void;
+  onDecrement: () => void;
+}) => {
   return (
     <div
       style={{
@@ -41,11 +45,3 @@ const DecimalInput = ({ value, onIncrement, onDecrement }) => {
     </div>
   );
 };
-
-DecimalInput.propTypes = {
-  value: PropTypes.number.isRequired,
-  onIncrement: PropTypes.func.isRequired,
-  onDecrement: PropTypes.func.isRequired,
-};
-
-export default DecimalInput;

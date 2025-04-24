@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import Binary2DecimalFrame from "../components/Binary2DecimalFrame";
-import { useRouter } from "next/router";
+import { CountDownFrame } from "@/components/Frame/CountDownFrame";
+import Decimal2BinaryFrame from "@/components/Frame/Decimal2BinaryFrame";
+import { ResultFrame } from "@/components/Frame/ResultFrame";
 import {
   Difficulty,
   GeneratorSettings,
   isDifficulty,
 } from "@/models/Difficulty";
-import { Phase } from "@/models/Phase";
-import { CountDownFrame } from "@/components/CountDownFrame";
-import { ResultFrame } from "@/components/ResultFrame";
 import { Mode } from "@/models/Mode";
-import Decimal2BinaryFrame from "@/components/Decimal2BinaryFrame";
+import { Phase } from "@/models/Phase";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import Binary2DecimalFrame from "../components/Frame/Binary2DecimalFrame";
 
 const QUESTION_COUNT = 3;
 
@@ -74,7 +74,7 @@ const Binary2DecimalPage = () => {
     <div className="container">
       <h1>
         {mode === Mode.Binary2Decimal && "2進数 → 10進数"}
-        {mode === Mode.DecimalToBinary && "10進数 → 2進数"}
+        {mode === Mode.Decimal2Binary && "10進数 → 2進数"}
       </h1>
       {phase === Phase.CountDown && <CountDownFrame setPhase={setPhase} />}
       {phase === Phase.Game && mode === Mode.Binary2Decimal && (
@@ -87,7 +87,7 @@ const Binary2DecimalPage = () => {
           setTotalTime={setTotalTime}
         />
       )}
-      {phase === Phase.Game && mode === Mode.DecimalToBinary && (
+      {phase === Phase.Game && mode === Mode.Decimal2Binary && (
         <Decimal2BinaryFrame
           key={questionIndex + " " + timeLimit}
           settings={settings}
