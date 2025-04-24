@@ -1,5 +1,7 @@
+import Binary2HexadecimalFrame from "@/components/Frame/Binary2HexadecimalFrame";
 import { CountDownFrame } from "@/components/Frame/CountDownFrame";
 import Decimal2BinaryFrame from "@/components/Frame/Decimal2BinaryFrame";
+import Hexadecimal2Binary from "@/components/Frame/Hexadecimal2BinaryFrame";
 import { ResultFrame } from "@/components/Frame/ResultFrame";
 import {
   Difficulty,
@@ -36,13 +38,37 @@ const getBinary2DecimalSettings = (
 ): GeneratorSettings => {
   switch (difficulty) {
     case Difficulty.Easy:
-      return { binaryDigits: 3, decimalDigits: 1, min: 1, max: 7 };
+      return {
+        binaryDigits: 3,
+        decimalDigits: 1,
+        hexadecimalDigits: 1,
+        min: 1,
+        max: 7,
+      };
     case Difficulty.Normal:
-      return { binaryDigits: 4, decimalDigits: 2, min: 8, max: 15 };
+      return {
+        binaryDigits: 4,
+        decimalDigits: 2,
+        hexadecimalDigits: 1,
+        min: 8,
+        max: 15,
+      };
     case Difficulty.Hard:
-      return { binaryDigits: 6, decimalDigits: 2, min: 16, max: 63 };
+      return {
+        binaryDigits: 6,
+        decimalDigits: 2,
+        hexadecimalDigits: 2,
+        min: 16,
+        max: 63,
+      };
     default:
-      return { binaryDigits: 8, decimalDigits: 3, min: 1, max: 255 };
+      return {
+        binaryDigits: 8,
+        decimalDigits: 3,
+        hexadecimalDigits: 2,
+        min: 16,
+        max: 255,
+      };
   }
 };
 
@@ -89,6 +115,26 @@ const Binary2DecimalPage = () => {
       )}
       {phase === Phase.Game && mode === Mode.Decimal2Binary && (
         <Decimal2BinaryFrame
+          key={questionIndex + " " + timeLimit}
+          settings={settings}
+          timeLimit={timeLimit}
+          onTimeout={handleTimeout}
+          onAnswerCorrect={handleAnswerCorrect}
+          setTotalTime={setTotalTime}
+        />
+      )}
+      {phase === Phase.Game && mode === Mode.Binary2Hexadecimal && (
+        <Binary2HexadecimalFrame
+          key={questionIndex + " " + timeLimit}
+          settings={settings}
+          timeLimit={timeLimit}
+          onTimeout={handleTimeout}
+          onAnswerCorrect={handleAnswerCorrect}
+          setTotalTime={setTotalTime}
+        />
+      )}
+      {phase === Phase.Game && mode === Mode.Hexadecimal2Binary && (
+        <Hexadecimal2Binary
           key={questionIndex + " " + timeLimit}
           settings={settings}
           timeLimit={timeLimit}

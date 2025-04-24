@@ -31,29 +31,31 @@ const BinaryDigitCard = ({
   onClick,
 }: {
   value: number;
-  numDots: number;
+  numDots?: number;
   isActive: boolean;
   onClick: () => void;
 }) => {
-  const { rows, columns } = getDotGridLayout(numDots);
+  const { rows, columns } = getDotGridLayout(numDots ?? 0);
   return (
     <div
       className={styles.card + " " + (isActive ? styles.active : "")}
       onClick={onClick}
     >
       <div className={styles.value}>{value}</div>
-      <div className={styles.dots}>
-        {Array.from({ length: rows }).map((_) => {
-          return (
-            <>
-              {Array.from({ length: columns })
-                .map((_) => "●")
-                .join("")}
-              <br />
-            </>
-          );
-        })}
-      </div>
+      {numDots != null && (
+        <div className={styles.dots}>
+          {Array.from({ length: rows }).map((_) => {
+            return (
+              <>
+                {Array.from({ length: columns })
+                  .map((_) => "●")
+                  .join("")}
+                <br />
+              </>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

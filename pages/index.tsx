@@ -54,6 +54,42 @@ const Top = () => {
           </Link>
         </div>
       </section>
+
+      <section className="nes-container with-title is-centered">
+        <h2 className="title">2進数 → 16進数</h2>
+        <div>
+          <Link
+            className="nes-btn is-warning"
+            href={`/game?mode=${Mode.Binary2Hexadecimal}&difficulty=${Difficulty.Normal}`}
+          >
+            ノーマル
+          </Link>
+          <Link
+            className="nes-btn is-error"
+            href={`/game?mode=${Mode.Binary2Hexadecimal}&difficulty=${Difficulty.Extream}`}
+          >
+            ハード
+          </Link>
+        </div>
+      </section>
+
+      <section className="nes-container with-title is-centered">
+        <h2 className="title">16進数 → 2進数</h2>
+        <div>
+          <Link
+            className="nes-btn is-warning"
+            href={`/game?mode=${Mode.Hexadecimal2Binary}&difficulty=${Difficulty.Normal}`}
+          >
+            ノーマル
+          </Link>
+          <Link
+            className="nes-btn is-error"
+            href={`/game?mode=${Mode.Hexadecimal2Binary}&difficulty=${Difficulty.Extream}`}
+          >
+            ハード
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

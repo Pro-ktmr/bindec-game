@@ -1,3 +1,4 @@
+import { numberToHexadecimal } from "@/libs/convert";
 import styles from "./DigitInput.module.css";
 
 export const DigitInput = ({
@@ -20,7 +21,7 @@ export const DigitInput = ({
       >
         ▲
       </div>
-      <div className={styles.value}>{value.toString(16)}</div>
+      <div className={styles.value}>{numberToHexadecimal(value, 1)}</div>
       <div
         className={styles.arrow}
         style={{
